@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>PANORAMA</title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+
+    <script src="js/components.js"></script>
+</head>
+
+<body>
+    <a-scene>
+        <a-assets><img id="sky360" src="assets/panorama.jpg" /></a-assets>
+
+
+        <a-sky src="#sky360"></a-sky>
+
+        <a-sphere id="hotspot1" color="#00D4FF" radius="0.3" position="-3 1.6 -5" class="clickable"
+            animation="property: position; to: -3 1.9 -5; dir: alternate; dur: 2000; loop: true"></a-sphere>
+        <a-text value="Tebing Merah" color="#00D4FF" position="-3 2.4 -5" align="center" look-at-camera></a-text>
+
+        <a-sphere id="hotspot2" color="#FF6B9D" radius="0.3" position="3 1.6 -5" class="clickable"
+            animation="property: position; to: 3 1.9 -5; dir: alternate; dur: 2500; loop: true"></a-sphere>
+        <a-text value="Sungai Colorado" color="#FF6B9D" position="3 2.4 -5" align="center" look-at-camera></a-text>
+
+        <a-sphere id="hotspot3" color="#00E5A0" radius="0.3" position="0 1.6 -7" class="clickable"
+            animation="property: position; to: 0 1.9 -7; dir: alternate; dur: 2200; loop: true"></a-sphere>
+        <a-text value="Gua Tersembunyi" color="#00E5A0" position="0 2.4 -7" align="center" look-at-camera></a-text>
+
+        <a-sphere id="hotspot4" color="#FFD700" radius="0.3" position="-5 1.6 -2" class="clickable"
+            animation="property: position; to: -5 1.9 -2; dir: alternate; dur: 1800; loop: true"></a-sphere>
+        <a-text value="Sarang Elang" color="#FFD700" position="-5 2.4 -2" align="center" look-at-camera></a-text>
+
+        <a-entity id="infoPanel" visible="false" position="0 2.5 -4">
+            <a-plane color="#1A0D00" width="4" height="1.5"></a-plane>
+            <a-text id="infoText" color="#FFFFFF" width="3.6" align="center" position="0 0 0.01"></a-text>
+        </a-entity>
+
+        <a-link href="index.html" title="Kembali" position="-4 1.6 -4" class="clickable"></a-link>
+
+        <a-camera position="0 1.6 0" wasd-controls="fly: false">
+            <a-cursor color="#FFD700" fuse="true" fuse-timeout="1500" raycaster="objects: .clickable"></a-cursor>
+        </a-camera>
+    </a-scene>
+
+    <script>
+        const panel = document.querySelector("#infoPanel");
+        const infoText = document.querySelector("#infoText");
+        let timer = null;
+        function tampilInfo(teks) {
+            infoText.setAttribute("value", teks);
+            panel.setAttribute("visible", "true");
+            clearTimeout(timer);
+            timer = setTimeout(() => panel.setAttribute("visible", "false"), 4000);
+        }
+        document.querySelector("#hotspot1").addEventListener("click", () => tampilInfo("Tebing Merah:\n" +
+            "Terbentuk oleh erosi angin dan air selama jutaan tahun."));
+        document.querySelector("#hotspot2").addEventListener("click", () => tampilInfo("Sungai Colorado:\n" +
+            "Sungai Colorado adalah salah satu jalur air terpenting di Amerika Utara. Mengalir sepanjang 2.333 km dari \n Pegunungan Rocky di Colorado hingga bermuara ke Teluk California di Meksiko,\n sungai ini terkenal sebagai pemahat alami Grand Canyon di Arizona. Sungai ini menyokong kehidupan sekitar 40 juta orang."));
+        document.querySelector("#hotspot3").addEventListener("click", () => tampilInfo("Gua Tersembunyi:\n" +
+            "Gua besar sedalam 200 kaki yang terbentuk 20 juta tahun lalu, serta akuifer raksasa yang mengalir di bawah ngarai."));
+        document.querySelector("#hotspot4").addEventListener("click", () => tampilInfo("Sarang Elang:\nTitik pemantauan elang gurun:\n" +
+            "Elang gurun (Golden Eagle) adalah predator puncak di ekosistem gurun. Mereka membangun sarang besar "
+        ));
+    </script>
+</body>
+
+</html>

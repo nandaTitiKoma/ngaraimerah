@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>TEMA YAVAPAI</title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+    <script src="js/components.js"></script>
+</head>
+
+<body>
+    <a-scene>
+        <a-entity environment="preset: yavapai; ground: flat; fog: 0.6"></a-entity>
+
+        <a-box position="-2 1 -4" color="#CD5C5C" class="clickable"
+            animation="property: rotation; to: 0 360 0; loop: true; dur: 6500; easing: linear"></a-box>
+
+        <a-sphere position="0 1.5 -4" radius="0.8" color="#F4A460" class="clickable"
+            animation="property: position; to: 0 2.5 -4; dir: alternate; dur: 1500; loop: true; easing: easeInOutSine"></a-sphere>
+
+        <a-cylinder position="2 1 -4" radius="0.5" height="2" color="#8B4513" class="clickable"
+            animation__click="property: scale; to: 1.5 1.5 1.5; startEvents: click; dir: alternate; dur: 300"></a-cylinder>
+
+        <a-cone position="4 1 -4" radius-bottom="0.5" height="1.5" color="#FFD700" class="clickable"
+            animation="property: rotation; to: 0 360 0; loop: true; dur: 3000; easing: linear"
+            animation__click="property: material.color; to: #FFFFFF; startEvents: click; dur: 300"></a-cone>
+
+        <a-text value="Tatap/Klik portal untuk pindah ruangan!" position="-3 3.5 -5" color="#FFFFFF" width="6"
+            blink="interval: 800"></a-text>
+
+        <a-link href="scene2.html" title="Panorama 360" position="-4 1.6 -5" class="clickable"></a-link>
+        <a-link href="scene3-model.html" title="Model 3D" position="0 1.6 -7" class="clickable"></a-link>
+        <a-link href="scene4-gallery.html" title="Galeri" position="6 1.6 -5" class="clickable"></a-link>
+
+        <a-camera position="0 1.6 0" wasd-controls="fly: false; acceleration: 30">
+            <a-cursor color="#FFFFFF" fuse="true" fuse-timeout="1500" raycaster="objects: .clickable"></a-cursor>
+        </a-camera>
+    </a-scene>
+</body>
+
+</html>

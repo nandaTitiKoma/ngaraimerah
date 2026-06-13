@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>GALERI</title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+
+    <script src="js/components.js"></script>
+</head>
+
+<body>
+
+    <a-scene>
+        <a-entity environment="preset: yavapai; ground: flat; fog: 0.6"></a-entity>
+
+        <a-assets>
+            <a-asset-item id="modelSama" src="assets/model.glb"></a-asset-item>
+            <a-asset-item id="modelKaktus" src="assets/cactus.glb"></a-asset-item>
+            <a-asset-item id="modelTengkorak" src="assets/cow_skull.glb"></a-asset-item>
+        </a-assets>
+
+        <a-sky color="#B05020"></a-sky>
+
+        <a-entity gltf-model="#modelKaktus" position="-4 0 -4" scale="0.01 0.015 0.015"></a-entity>
+        <a-text value="Kaktus Liar" position="-4 6 -4" align="center" color="#FFFFFF" look-at-camera></a-text>
+
+        <a-entity gltf-model="#modelSama" position="0 0.1 -4" scale="0.05 0.05 0.05" rotation="0 0 0"></a-entity>
+        <a-text value="Topi Koboi" position="0 2.5 -4" align="center" color="#FFFFFF" look-at-camera></a-text>
+
+        <a-entity gltf-model="#modelTengkorak" position="4 0 -4" scale="0.040 0.040 0.040"></a-entity>
+        <a-text value="Fosil Gurun" position="4 2.5 -4" align="center" color="#FFFFFF" look-at-camera></a-text>
+
+        <a-light type="ambient" color="#FFFFFF" intensity="1.5"></a-light>
+
+        <a-link href="index.html" title="Kembali ke Awal" position="-9 1.6 -3" class="clickable"></a-link>
+
+        <a-camera position="0 1.6 0" wasd-controls="fly: false">
+            <a-cursor fuse="true" raycaster="objects: .clickable"></a-cursor>
+        </a-camera>
+    </a-scene>
+</body>
+
+</html>
